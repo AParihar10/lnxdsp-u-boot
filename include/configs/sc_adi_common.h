@@ -62,10 +62,17 @@
 
 #define ADI_MMC_BOOTCMD "run mmcargs; " ADI_BOOT ""
 
+#ifdef CONFIG_SC59X
+#define ADI_MEM_SIZE	"mem=512M "
+#else
+#define ADI_MEM_SIZE	""
+#endif
+
 #define ADI_BOOTARGS_CONSOLE \
 		ADI_EARLYPRINTK \
 		"console=ttySC" __stringify(CONFIG_UART_CONSOLE) "," \
-						__stringify(CONFIG_BAUDRATE) " " \
+				__stringify(CONFIG_BAUDRATE) " " \
+				ADI_MEM_SIZE \ 
 		"vmalloc=512M "
 
 #define ADI_BOOTARGS_MMC \
@@ -208,7 +215,7 @@
 	\
 	"imagefile=" IMAGEFILE "\0" \
 	"initramfile=adsp-sc5xx-ramdisk-adsp-" CONFIG_SYS_BOARD ".cpio.xz.u-boot\0" \
-	"jffs2file=adsp-sc5xx-" ADI_JFFS2_FILE "-adsp-" CONFIG_SYS_BOARD ".jffs2\0" \
+	"jffs2file=adsp-sc5xx-" ADI_JFFS2_FILE "-adsp-" CONFIG_SYS_BOARD ".rootfs.jffs2\0" \
 	"initramaddr=" INITRAMADDR "\0" \
 	"dtbfile=" CONFIG_DTBNAME "\0" \
 	"dtbaddr=" CONFIG_DTBLOADADDR "\0" \
