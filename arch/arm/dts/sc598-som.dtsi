@@ -178,19 +178,19 @@
 			u-boot,dm-pre-reloc;
 		};
 
-		uart0 {
+		uart1 {
 			gpio-hog;
 			gpios = <5 GPIO_ACTIVE_HIGH>;
 			output-low;
-			line-name = "~uart0-en";
+			line-name = "~uart1-en";
 			u-boot,dm-pre-reloc;
 		};
 
-		uart0-flow-en {
+		uart1-flow-en {
 			gpio-hog;
 			gpios = <6 GPIO_ACTIVE_HIGH>;
 			output-high;
-			line-name = "~uart0-flow-en";
+			line-name = "~uart1-flow-en";
 			u-boot,dm-pre-reloc;
 		};
 
